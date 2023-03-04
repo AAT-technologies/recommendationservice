@@ -23,16 +23,15 @@ pipeline {
        steps {
          sh ''' ls
          '''
-           withCredentials([aws(credentialsId: 'aws-credentials', region: 'us-east-2')]) {
+            withCredentials([aws(credentialsId: 'aws-credentials', region: 'ca-central-1')]) {
            sh 'kubectl version --client --output=yaml'
            sh '''
-                 aws eks --region us-east-2 update-kubeconfig --name master
+                 aws eks --region ca-central-1 update-kubeconfig --name boot-demo
                  kubectl config current-context
-                 kubectl config use-context arn:aws:eks:us-east-2:842423002160:cluster/master 
+                 kubectl config use-context arn:aws:eks:ca-central-1:487585538889:cluster/boot-demo 
                  kubectl apply -f cluster.yaml
                  kubectl get node
                  kubectl get service
-                 kubectl get service frontend-external
                  '''
            }
         }
