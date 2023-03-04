@@ -9,7 +9,7 @@ pipeline {
           sh ''' sudo docker system prune -af
           '''
          
-         sh ''' cd app/recommendationservice
+         sh ''' cd app-recommend/recommendationservice
                   ls
                   sudo docker build -t delalixx/recommendationservice .
                   sudo docker push delalixx/recommendationservice
