@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage ('Testing') {
       steps {
-          git branch: 'main', credentialsId: 'for-git', url: 'https://github.com/AAT-technologies/recommendationservice.git'
+          git branch: 'stg', credentialsId: 'for-git', url: 'https://github.com/AAT-technologies/recommendationservice.git'
           sh ''' sudo docker login -u delalixx -p dckr_pat_-dfSKHYHBVZNLTVX1R5sxmNGJwo
           '''
           sh ''' sudo docker system prune -af
           '''
          
-         sh ''' cd app/recommendationservice
+         sh ''' cd app-recommend/recommendationservice
                   ls
                   sudo docker build -t delalixx/recommendationservice .
                   sudo docker push delalixx/recommendationservice
