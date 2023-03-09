@@ -47,7 +47,7 @@ spec:
               - all
           privileged: false
           readOnlyRootFilesystem: true
-        image: delalixx/recommendationservice:latest
+        image: delalixx/recommendationservice:v1
         ports:
         - containerPort: 8080
         readinessProbe:
